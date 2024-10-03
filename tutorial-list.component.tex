@@ -1,0 +1,20 @@
+import { Component, OnInit } from '@angular/core';
+import { TutorialService } from '../tutorial.service';
+
+@Component({
+  selector: 'app-tutorial-list',
+  templateUrl: './tutorial-list.component.html',
+  styleUrls: ['./tutorial-list.component.css']
+})
+export class TutorialListComponent implements OnInit {
+  
+  tutorials: any[];
+  
+  constructor(private tutorialService: TutorialService) { }
+  
+  ngOnInit(): void {
+    this.tutorialService.getAllTutorials().subscribe(tutorials => {
+      this.tutorials = tutorials;
+    });
+  }
+}
